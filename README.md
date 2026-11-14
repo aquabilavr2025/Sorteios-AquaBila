@@ -120,6 +120,7 @@ O código não depende de serviços de armazenamento pagos. **Atenção:** a Ver
 7. A animação tem duração de 5 segundos; após `completedAt`, a API devolve o estado `COMPLETED` e revela o número vencedor.
 8. O administrador pode preparar outro sorteio assim que o anterior terminar.
 
+
 ### Participantes
 
 A página pública usa polling: a cada **1,5 segundos** quando está em espera, **700 ms** durante a animação e **6 segundos** em modo concluído/vazio. Os clientes recebem o timestamp de início e a hora do servidor, ajustam a roda ao tempo já passado e mostram o resultado quando o backend permite.
