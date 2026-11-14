@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  /* Placeholder palette inspired by the aquatic world. Replace with official brand tokens when available. */
+  --brand-950: #071d2c;
+  --brand-900: #0b293a;
+  --brand-800: #123b4c;
+  --brand-500: #11b8ac;
+  --brand-400: #37d7c9;
+  --brand-100: #daf8f3;
+  --surface: #f5f8fb;
+  --foreground: #112b3c;
+}
+
+@theme inline {
+  --color-ocean-950: var(--brand-950);
+  --color-ocean-900: var(--brand-900);
+  --color-ocean-800: var(--brand-800);
+  --color-aqua-500: var(--brand-500);
+  --color-aqua-400: var(--brand-400);
+  --font-sans: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--foreground);
+  background: var(--surface);
+  font-family: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: #8af0df; color: #073047; }
+
+.ocean-hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse 70% 120% at 91% 9%, #0e5961 0%, #0a3645 45%, #071d2c 88%);
+}
+.ocean-hero::before {
+  position: absolute;
+  content: "";
+  right: -205px;
+  top: -330px;
+  width: 780px;
+  height: 780px;
+  border: 1px solid rgba(103, 225, 213, 0.10);
+  border-radius: 50%;
+  box-shadow: 0 0 0 95px rgba(67, 193, 191, 0.035), 0 0 0 195px rgba(91, 209, 208, 0.02);
+  pointer-events: none;
+}
+.ocean-hero::after {
+  position: absolute;
+  content: "";
+  left: 8%;
+  top: -160px;
+  width: 420px;
+  height: 320px;
+  background: radial-gradient(ellipse, rgba(6, 184, 181, .13), transparent 72%);
+  pointer-events: none;
+}
+
+.wheel-disc {
+  background:
+    radial-gradient(circle at center, transparent 0 31%, rgba(255,255,255,.05) 31.2% 32%, transparent 32.2%),
+    repeating-conic-gradient(from -11.25deg, #16c1b4 0deg 22.5deg, #0d3d56 22.5deg 45deg, #34d7c1 45deg 67.5deg, #165873 67.5deg 90deg);
+  box-shadow: inset 0 0 0 8px rgba(255,255,255,.9), inset 0 0 0 11px rgba(12,74,83,.15), 0 25px 70px -28px rgba(8, 63, 81, .35);
+}
+.wheel-disc::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, transparent 0 21.8deg, rgba(255,255,255,.4) 22deg 22.5deg);
+  pointer-events: none;
+}
+.wheel-pointer {
+  width: 0;
+  height: 0;
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent;
+  border-top: 27px solid #143447;
+  filter: drop-shadow(0 4px 2px rgba(2,40,50,.12));
+}
+.waiting-breathe { animation: waitingBreathe 4.8s ease-in-out infinite; }
+@keyframes waitingBreathe {
+  0%, 100% { transform: rotate(-2deg) scale(0.994); }
+  50% { transform: rotate(2deg) scale(1.008); }
+}
+.float-glow { animation: floatGlow 8s ease-in-out infinite; }
+@keyframes floatGlow {
+  0%,100% { transform: translateY(0); opacity: .65; }
+  50% { transform: translateY(-18px); opacity: 1; }
+}
+.skeleton-line { background: linear-gradient(90deg,#e4edf1 0%,#f5f9fa 50%,#e4edf1 100%); background-size: 200% 100%; animation: shimmer 1.6s infinite; }
+@keyframes shimmer { to { background-position-x: -200%; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
