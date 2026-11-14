@@ -127,6 +127,7 @@ A página pública usa polling: a cada **1,5 segundos** quando está em espera, 
 
 O contador mostrado durante a rotação **não é uma seleção real de vencedores**; é um efeito visual determinístico. A informação real é fornecida apenas pelo servidor no final do sorteio. O frontend não possui permissões para escolher, editar ou guardar resultados.
 
+
 ### Persistência e concorrência
 
 As escritas usam a **GitHub Contents API** com o `sha` do ficheiro. Se outro pedido alterar o ficheiro entre a leitura e a escrita, ocorre conflito. O código volta a ler o ficheiro e **reavalia toda a operação** antes de tentar de novo. O endpoint de início recebe o `drawId`; repetir um pedido de início para esse mesmo sorteio devolve sempre o vencedor já guardado.
